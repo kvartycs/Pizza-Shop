@@ -7,7 +7,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+header {
+  border-bottom: 2px solid #f7f7f7;
+  padding-bottom: 30px;
+}
 * {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -118,7 +121,6 @@ body {
       border-radius: 30px;
 
       &:hover {
-        background: #f3f3f3;
         cursor: pointer;
         transform: translateY(-5px);
         transition: transform 0.1s ease-in-out;
@@ -172,4 +174,54 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+.cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .cartcontent {
+    margin-top: 100px;
+    width: 610px;
+    height: 570px;
+    .cartitem {
+      border-top: 1px solid #f4f4f4;
+      padding-top: 30px;
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+      .itemdescription {
+        p {
+          margin: 0;
+          opacity: 50%;
+        }
+      }
+      .itemcount {
+        display: flex;
+        align-items: center;
+        b {
+          margin: 10px;
+        }
+      }
+    }
+  }
+  .cartheader {
+    display: flex;
+    justify-content: space-between;
+    .cartside {
+      b {
+        margin-left: 12px;
+        font-size: 26px;
+      }
+    }
+    .deleteside {
+      display: flex;
+      p {
+        margin: 0;
+        margin-left: 8px;
+        color: #b6b6b6;
+      }
+    }
+  }
 }

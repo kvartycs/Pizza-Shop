@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from './UI/Button/Button'
 
 function Card(props) {
   return (
@@ -22,7 +23,7 @@ function Card(props) {
             <b>от {props.price} ₽</b>
           </div>
           <div className="">
-            <img src="./img/add-btn.svg" alt="add" />
+            <Button>Добавить</Button>
           </div>
         </div>
       </div>
