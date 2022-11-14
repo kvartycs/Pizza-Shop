@@ -4,8 +4,6 @@ import { useState } from 'react'
 const Categories = ({ items }) => {
   const [choosenCategorie, setChoosenCategorie] = useState(null)
 
-  console.log(choosenCategorie)
-  console.log(Boolean())
   return (
     <div className="categories">
       <button

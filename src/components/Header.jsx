@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Button from './UI/Button/Button'
 
 const Header = () => {
   return (
@@ -20,7 +19,7 @@ const Header = () => {
 
         <div className="buttonside">
           <Link to="/cart">
-            <Button>
+            <button>
               <ul>
                 <li>520P</li>
                 <li>|</li>
@@ -29,7 +28,7 @@ const Header = () => {
                 </li>
                 <li>3</li>
               </ul>
-            </Button>
+            </button>
           </Link>
         </div>
       </div>

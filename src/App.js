@@ -3,9 +3,10 @@ import { Route, Routes } from 'react-router-dom'
 
 import Header from './components/Header'
 
-import Button from './components/UI/Button/Button'
 import Cart from './pages/Cart'
 import Home from './pages/Home'
+
+import NotFound from './components/UI/NotFound/NotFound'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
           <Route path="/cart" element={<Cart></Cart>}></Route>
+          <Route path="*" element={<NotFound></NotFound>}></Route>
         </Routes>
       </div>
     </div>
