@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Search from './UI/Search/Search'
 
 const Header = () => {
   return (
@@ -16,7 +17,7 @@ const Header = () => {
             </div>
           </div>
         </Link>
-
+        <div className="searchside"></div>
         <div className="buttonside">
           <Link to="/cart">
             <button>

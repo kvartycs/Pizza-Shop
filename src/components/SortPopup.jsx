@@ -1,13 +1,18 @@
 import React from 'react'
 
-const SortPopup = () => {
+const SortPopup = ({ value, onClickSort }) => {
+  const changeSelect = (event) => {
+    onClickSort(event.target.value)
+  }
+
   return (
     <div className="sort">
-      <b>Сортировать по: </b>
-      <select name="" id="">
-        <option value="0">по популярности</option>
-        <option value="0">по цене</option>
-        <option value="0">по алфавиту</option>
+      <b>Сортировка: </b>
+      <select name="" id="" onChange={changeSelect}>
+        <option value="rating">по популярности</option>
+        <option value="-price">сначала недорогие</option>
+        <option value="price">сначала дорогие</option>
+        <option value="-name">по алфавиту</option>
       </select>
     </div>
   )

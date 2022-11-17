@@ -1,0 +1,19 @@
+.input {
+  border-radius: 30px;
+  width: 200px;
+  padding: 13px;
+  border: 0;
+  font-size: 14px;
+  opacity: 0.8;
+}
+.block {
+  display: flex;
+  align-items: center;
+  border: 1px solid #f3f3f3;
+  border-radius: 10px;
+  padding: 0 15px;
+  position: relative;
+  @media (max-width: 1170px) {
+    margin-bottom: 40px;
+  }
+}
