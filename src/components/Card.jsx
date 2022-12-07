@@ -1,21 +1,37 @@
 import React from 'react'
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addItem, setPrice } from '../redux/slices/cartSlice'
 import Button from './UI/Button/Button'
 
 function Card(props) {
-  const [addedCount, setAddedCount] = useState(0)
+  const dispatch = useDispatch()
+  const cartItem = useSelector((state) =>
+    state.cartSlice.items.find((obj) => obj.id === props.id)
+  )
   const [activeType, setActiveType] = useState(0)
   const [activeSize, setActiveSize] = useState(0)
   const typeItems = ['тонкое', 'традиционное']
-  const incrementor = () => {
-    setAddedCount(addedCount + 1)
-    console.log(addedCount)
+
+  const addedCount = cartItem ? cartItem.count : 0
+
+  const onClickAdd = () => {
+    const item = {
+      id: props.id,
+      name: props.name,
+      image: props.image,
+      price: props.price,
+      type: typeItems[activeType],
+      size: props.sizes[activeSize],
+    }
+    dispatch(addItem(item))
+    dispatch(setPrice(item.price))
   }
   return (
     <div className="pizza-block-wrapper">
       <div className="card">
         <div>
-          <img src={props.image} width={260} height={260} alt="cheeseburger" />
+          <img src={props.image} width={260} height={260} alt="pizza" />
           <b>{props.name}</b>
           <div className="optional-block">
             <ul>
@@ -45,8 +61,8 @@ function Card(props) {
             <div className="">
               <b>от {props.price} ₽</b>
             </div>
-            <div className="" onClick={incrementor}>
-              <Button>
+            <div className="">
+              <Button onClick={onClickAdd}>
                 Добавить {addedCount > 0 ? <i>{addedCount}</i> : <b></b>}
               </Button>
             </div>

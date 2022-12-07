@@ -8,6 +8,7 @@ import Home from './pages/Home'
 
 import NotFound from './components/UI/NotFound/NotFound'
 import { useState } from 'react'
+
 import AppContext from './context'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home></Home>}></Route>
             <Route path="/cart" element={<Cart></Cart>}></Route>
+
             <Route path="*" element={<NotFound></NotFound>}></Route>
           </Routes>
         </div>

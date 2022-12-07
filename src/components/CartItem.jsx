@@ -1,30 +1,41 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { addItem, minusItem, removeItem } from '../redux/slices/cartSlice'
 
-const CartItem = ({ price, amount, img, name, option }) => {
+const CartItem = ({ id, price, count, image, name, type, size }) => {
+  const dispatch = useDispatch()
+
+  const onClickPlus = () => {
+    dispatch(addItem({ id }))
+  }
+  const onClickMinus = () => {
+    dispatch(minusItem(id))
+  }
+  const onClickRemove = () => {
+    dispatch(removeItem(id))
+  }
+
   return (
     <div className="cartitem">
       <div className="itemimg">
-        <img
-          src="../img/pizza/cheese chicken.svg"
-          alt="pizza"
-          width={80}
-          height={80}
-        />
+        <img src={image} alt="pizza" width={80} height={80} />
       </div>
       <div className="itemdescription">
-        <b>Сырный цыпленок</b>
-        <p>тонкое тесто, 26см</p>
+        <b>{name}</b>
+        <p>
+          {type}, {Number(size)}см
+        </p>
       </div>
       <div className="itemcount">
-        <img src="../img/minus.svg" alt="minus" />
-        <b>2</b>
-        <img src="../img/plus.svg" alt="plus" />
+        <img src="../img/minus.svg" alt="minus" onClick={onClickMinus} />
+        <b>{count}</b>
+        <img src="../img/plus.svg" alt="plus" onClick={onClickPlus} />
       </div>
       <div className="itemprice">
-        <b>770 ₽ </b>
+        <b>{price * count} ₽ </b>
       </div>
       <div className="itemremove">
-        <img src="../img/remove.svg" alt="remove" />
+        <img src="../img/remove.svg" alt="remove" onClick={onClickRemove} />
       </div>
     </div>
   )

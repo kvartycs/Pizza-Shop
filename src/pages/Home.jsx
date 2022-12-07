@@ -1,44 +1,44 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Card from '../components/Card'
 import Categories from '../components/Categories'
 import SortPopup from '../components/SortPopup'
-import axios from 'axios'
 
+import { useSelector, useDispatch } from 'react-redux'
+import {
+  setChoosenCategorie,
+  setChoosenSort,
+} from '../redux/slices/filterSlice'
+import { fetchPizzas } from '../redux/slices/pizzaSlice'
 import Skeleton from '../components/Skeleton'
 import Search from '../components/UI/Search/Search'
 import { useContext } from 'react'
 import AppContext from '../context'
+import { useEffect } from 'react'
 
 const Home = () => {
-  const [items, setItems] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [choosenCategorie, setChoosenCategorie] = useState(0)
-  const [choosenSort, setChoosenSort] = useState(0)
+  const dispatch = useDispatch()
+
+  const choosenCategorie = useSelector((state) => state.filter.choosenCategorie)
   const { searchValue } = useContext(AppContext)
+  const onChangeCategory = (id) => {
+    dispatch(setChoosenCategorie(id))
+  }
+  const choosenSort = useSelector((state) => state.filter.choosenSort)
+  const onChangeSort = (value) => {
+    dispatch(setChoosenSort(value))
+  }
+
+  const { items, status } = useSelector((state) => state.pizza)
+
+  const getPizzas = async () => {
+    dispatch(fetchPizzas({ choosenCategorie, choosenSort, searchValue }))
+    window.scrollTo(0, 0)
+  }
 
   useEffect(() => {
-    async function fecthData() {
-      try {
-        setIsLoading(true)
-        const [itemsResponse] = await Promise.all([
-          axios.get(
-            `https://636f205cf2ed5cb047d607ba.mockapi.io/items?${
-              choosenCategorie > 0 ? `category=${choosenCategorie}` : ''
-            }&sortBy=${choosenSort ? choosenSort.replace('-', '') : ''}&order=${
-              choosenSort ? (choosenSort.includes('-') ? 'asc' : 'desc') : ''
-            }`
-          ),
-        ])
-        setIsLoading(false)
-        setItems(itemsResponse.data)
-      } catch (error) {
-        alert('Error: ', error)
-      }
-    }
-    fecthData()
-    window.scrollTo(0, 0)
-  }, [choosenCategorie, choosenSort])
-
+    getPizzas()
+  }, [])
+  console.log(items)
   return (
     <div className="content">
       <div className="sorting">
@@ -52,14 +52,14 @@ const Home = () => {
             'Закрытые',
           ]}
           value={choosenCategorie}
-          onClickCategory={setChoosenCategorie}
+          onClickCategory={onChangeCategory}
         ></Categories>
         <Search></Search>
-        <SortPopup value={choosenSort} onClickSort={setChoosenSort}></SortPopup>
+        <SortPopup value={choosenSort} onClickSort={onChangeSort}></SortPopup>
       </div>
       <h2>Все пиццы</h2>
       <div className="cards">
-        {isLoading
+        {status === 'loading'
           ? [...new Array(8)].map((_, index) => (
               <Skeleton key={index}></Skeleton>
             ))
@@ -73,8 +73,9 @@ const Home = () => {
                   return false
                 }
               })
-              .map((item) => (
+              .map((item, id) => (
                 <Card
+                  id={id}
                   name={item.name}
                   price={item.price}
                   image={item.image}
