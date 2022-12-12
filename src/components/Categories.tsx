@@ -1,11 +1,21 @@
 import React from 'react'
 
-const Categories = ({ items, value, onClickCategory }) => {
+type CategoriesProps = {
+  value: number
+  onClickCategory: (index: number) => void
+  items: string[]
+}
+
+const Categories: React.FC<CategoriesProps> = ({
+  items,
+  value,
+  onClickCategory,
+}) => {
   return (
     <div className="categories">
       <ul>
         {items &&
-          items.map((name, index) => (
+          items.map((name: string, index: number) => (
             <li
               key={`${name}+${index}`}
               onClick={() => onClickCategory(index)}

@@ -1,7 +1,12 @@
 import React from 'react'
 import classes from './Button.module.scss'
 
-const Button = ({ children, onClick }) => {
+type ButtonProps = {
+  children: any
+  onClick?: () => void
+}
+
+const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
   return (
     <button onClick={onClick} className={classes.cartbtn}>
       {children}

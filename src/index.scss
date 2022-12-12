@@ -386,3 +386,19 @@ header {
     }
   }
 }
+.fullpizza {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  img {
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  b {
+    margin-bottom: 40px;
+  }
+  button {
+    margin: 0 auto;
+    margin-bottom: 40px;
+  }
+}

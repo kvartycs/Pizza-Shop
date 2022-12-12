@@ -1,8 +1,12 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setChoosenSort } from '../redux/slices/filterSlice'
 
-const SortPopup = ({ value, onClickSort }) => {
-  const changeSelect = (event) => {
-    onClickSort(event.target.value)
+const SortPopup: React.FC = () => {
+  const dispatch = useDispatch()
+
+  const changeSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    dispatch(setChoosenSort(event.target.value))
   }
 
   return (

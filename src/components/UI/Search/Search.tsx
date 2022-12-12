@@ -1,16 +1,16 @@
 import React from 'react'
-import { useRef } from 'react'
-import { useContext } from 'react'
-import AppContext from '../../../context'
+
+import { useDispatch, useSelector } from 'react-redux'
+
+import { selectFilter, setSearchValue } from '../../../redux/slices/filterSlice'
 import styles from './Search.module.scss'
 
-const Search = () => {
-  const { searchValue, setSearchValue } = useContext(AppContext)
+const Search: React.FC = () => {
+  const dispatch = useDispatch()
+  const { searchValue } = useSelector(selectFilter)
 
-  const inputRef = useRef(555)
   const onClickClear = () => {
-    setSearchValue('')
-    inputRef.current.focus()
+    dispatch(setSearchValue(''))
   }
 
   return (
@@ -19,19 +19,22 @@ const Search = () => {
         <img src="../img/search.svg" alt="search" />
         <input
           value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            dispatch(setSearchValue(e.target.value))
+          }
           className={styles.input}
           type="text"
           placeholder="Поиск..."
         />
-        {searchValue && (
+        {searchValue ? (
           <img
-            ref={inputRef}
             onClick={onClickClear}
             className=""
             src="img/btn-remove.svg"
             alt="close"
           />
+        ) : (
+          ''
         )}
       </div>
     </div>

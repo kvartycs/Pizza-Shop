@@ -1,10 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { selectCart } from '../redux/slices/cartSlice'
 
-const Header = () => {
-  const { items, totalPrice } = useSelector((state) => state.cartSlice)
-  const totalCount = items.reduce((sum, item) => sum + item.count, 0)
+const Header: React.FC = () => {
+  const { items, totalPrice } = useSelector(selectCart)
+  const location = useLocation()
+  const totalCount = items.reduce(
+    (sum: number, item: { count: number }) => sum + item.count,
+    0
+  )
+
   return (
     <header>
       <div className="header_content">
