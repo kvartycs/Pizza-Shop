@@ -6,7 +6,6 @@ import {
   addItem,
   ICartItem,
   selectCartItemById,
-  setPrice,
 } from '../redux/slices/cartSlice'
 import Button from './UI/Button/Button'
 
@@ -47,7 +46,6 @@ const Card: React.FC<CardProps> = ({
       count: 0,
     }
     dispatch(addItem(item))
-    dispatch(setPrice(item.price))
   }
   return (
     <div className="pizza-block-wrapper">

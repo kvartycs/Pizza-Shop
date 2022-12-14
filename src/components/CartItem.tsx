@@ -37,6 +37,9 @@ const CartItem: React.FC<CartIemProps> = ({
   const onClickRemove = () => {
     dispatch(removeItem(id))
   }
+  const nothing = () => {
+    return
+  }
 
   return (
     <div className="cartitem">
@@ -50,7 +53,11 @@ const CartItem: React.FC<CartIemProps> = ({
         </p>
       </div>
       <div className="itemcount">
-        <img src="../img/minus.svg" alt="minus" onClick={onClickMinus} />
+        <img
+          src="../img/minus.svg"
+          alt="minus"
+          onClick={count > 1 ? onClickMinus : nothing}
+        />
         <b>{count}</b>
         <img src="../img/plus.svg" alt="plus" onClick={onClickPlus} />
       </div>

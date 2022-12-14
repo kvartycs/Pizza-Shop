@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import Card from '../components/Card'
 import Categories from '../components/Categories'
 import SortPopup from '../components/SortPopup'
@@ -22,9 +22,9 @@ const Home: React.FC = () => {
 
   const { choosenCategorie, searchValue } = useSelector(selectFilter)
 
-  const onChangeCategory = (id: number) => {
+  const onChangeCategory = useCallback((id: number) => {
     dispatch(setChoosenCategorie(id))
-  }
+  }, [])
 
   const { items, status } = useSelector(selectPizzaData)
   const choosenSort = useSelector(selectSort)
@@ -77,6 +77,7 @@ const Home: React.FC = () => {
                 })
                 .map((item, id) => (
                   <Card
+                    key={item.id}
                     id={String(id)}
                     name={item.name}
                     price={item.price}

@@ -1,8 +1,8 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setChoosenSort } from '../redux/slices/filterSlice'
 
-const SortPopup: React.FC = () => {
+const SortPopup: React.FC = React.memo(() => {
   const dispatch = useDispatch()
 
   const changeSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -20,6 +20,6 @@ const SortPopup: React.FC = () => {
       </select>
     </div>
   )
-}
+})
 
 export default SortPopup
