@@ -1,0 +1,82 @@
+[
+  {
+    "id": 0,
+    "image": "https://cdn.dodostatic.net/static/Img/Products/96a0e1c862034d9ea9b9729514e53934_292x292.png",
+    "name": "Чизбургер-пицца",
+    "types": [0, 1],
+    "sizes": [25, 30, 35],
+    "price": 439,
+    "category": 0,
+    "rating": 4
+  },
+  {
+    "id": 1,
+    "image": "https://cdn.dodostatic.net/static/Img/Products/08c5215bd7434a169646d26106ede90d_292x292.png",
+    "name": "Четыре сезона",
+    "types": [0, 1],
+    "sizes": [25, 30, 35],
+    "price": 439,
+    "category": 0,
+    "rating": 4
+  },
+  {
+    "id": 2,
+    "image": "https://cdn.dodostatic.net/static/Img/Products/5f11f129fd7448ef90d3057730f739d9_292x292.png",
+    "name": "Мясная",
+    "types": [0, 1],
+    "sizes": [25, 30, 35],
+    "price": 499,
+    "category": 0,
+    "rating": 4
+  },
+  {
+    "id": 3,
+    "image": "https://cdn.dodostatic.net/static/Img/Products/351dd00cfec74c8d8eddc87a73aadfd5_292x292.png",
+    "name": "Пепперони",
+    "types": [0, 1],
+    "sizes": [25, 30, 35],
+    "price": 439,
+    "category": 0,
+    "rating": 4
+  },
+  {
+    "id": 4,
+    "image": "https://cdn.dodostatic.net/static/Img/Products/fd25b02ce0ff462a878aa1aa4539f3b5_292x292.png",
+    "name": "Сырный цыпленок",
+    "types": [0, 1],
+    "sizes": [25, 30, 35],
+    "price": 499,
+    "category": 0,
+    "rating": 4
+  },
+  {
+    "id": 5,
+    "image": "./img/pizza/cheese.svg",
+    "name": "Сырная",
+    "types": [0, 1],
+    "sizes": [25, 30, 35],
+    "price": 289,
+    "category": 0,
+    "rating": 4
+  },
+  {
+    "id": 6,
+    "image": "https://cdn.dodostatic.net/static/Img/Products/03696708a015402c96b8875fcd98b19e_292x292.png",
+    "name": "Цыпленок барбекю",
+    "types": [0, 1],
+    "sizes": [25, 30, 35],
+    "price": 499,
+    "category": 0,
+    "rating": 4
+  },
+  {
+    "id": 7,
+    "image": "https://cdn.dodostatic.net/static/Img/Products/5ac90c81176047ceb1a10f7ed57eef2e_292x292.png",
+    "name": "Цыпленок ранч",
+    "types": [0, 1],
+    "sizes": [25, 30, 35],
+    "price": 499,
+    "category": 0,
+    "rating": 4
+  }
+]
