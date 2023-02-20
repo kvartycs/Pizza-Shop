@@ -1,4 +1,5 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
+import Button from '../Button/Button'
 import styles from './NotFound.module.scss'
 
 const NotFound = () => {

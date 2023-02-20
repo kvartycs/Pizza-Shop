@@ -1,13 +1,13 @@
 import axios from 'axios'
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../store'
-import { ICartItem } from './cartSlice'
 
 type FetchPizzasArgs = {
   choosenCategorie: number
   choosenSort: string
   searchValue: string
 }
+
 type Pizza = {
   id: string
   price: number
@@ -16,6 +16,7 @@ type Pizza = {
   types: number[]
   sizes: number[]
 }
+
 export const fetchPizzas = createAsyncThunk(
   'pizza/fetchPizasStatus',
   async ({ choosenCategorie, choosenSort, searchValue }: FetchPizzasArgs) => {
@@ -26,6 +27,7 @@ export const fetchPizzas = createAsyncThunk(
         choosenSort ? (choosenSort.includes('-') ? 'asc' : 'desc') : ''
       }`
     )
+
     return data as Pizza[]
   }
 )

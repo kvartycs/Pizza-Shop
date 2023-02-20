@@ -15,9 +15,9 @@ function App() {
       <div className="wrapper clear">
         <Header></Header>
         <Routes>
-          <Route path="/" element={<Home></Home>}></Route>
+          <Route path="Pizza-Shop" element={<Home></Home>}></Route>
           <Route
-            path="/cart"
+            path="Pizza-Shop/cart"
             element={
               <Suspense fallback={<div>Идёт загрузка корзины...</div>}>
                 <Cart></Cart>
@@ -25,7 +25,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="/pizza/:id"
+            path="Pizza-Shop/pizza/:id"
             element={
               <Suspense fallback={<div>Идёт загрузка...</div>}>
                 <FullPizza></FullPizza>

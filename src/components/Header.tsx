@@ -22,7 +22,7 @@ const Header: React.FC = () => {
   return (
     <header>
       <div className="header_content">
-        <Link to="">
+        <Link to="/Pizza-Shop/">
           <div className="logoside">
             <div className="">
               <img src="./img/logo.svg" alt="logo" />
@@ -35,7 +35,7 @@ const Header: React.FC = () => {
         </Link>
         <div className="searchside"></div>
         <div className="buttonside">
-          <Link to="/cart">
+          <Link to="Pizza-Shop/cart">
             <button>
               <ul>
                 <li>{totalPrice}P</li>

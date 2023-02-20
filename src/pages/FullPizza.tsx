@@ -2,42 +2,41 @@ import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import Button from '../components/UI/Button/Button'
+import fullPizzaSlice, {
+  fetchFullPizza,
+  selectFullPizzaData,
+} from '../redux/slices/fullPizzaSlice'
+import { useDispatch } from 'react-redux'
 
 const FullPizza: React.FC = () => {
-  const [pizza, setPizza] = useState<{
-    image: string
-    name: string
-    price: number
-  }>()
   const { id } = useParams()
+  const { item } = useSelector(selectFullPizzaData)
+  const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const getFullPizza = async () => {
+    //@ts-ignore
+    dispatch(fetchFullPizza({ id }))
+    console.log(id)
+  }
+
   useEffect(() => {
-    async function fetchPizza() {
-      try {
-        const { data } = await axios.get(
-          'https://636f205cf2ed5cb047d607ba.mockapi.io/items/' + id
-        )
-        setPizza(data)
-      } catch (error) {
-        navigate('/')
-        console.error(error)
-        alert('Ошибка при получении пиццы')
-      }
-    }
-    fetchPizza()
+    getFullPizza()
   }, [])
 
-  if (!pizza) {
+  if (!item.image && !item.price && !item.name) {
     return <h1>Загрузка...</h1>
   }
   return (
     <div className="fullpizza">
-      <h1>{pizza.name}</h1>
-      <img src={pizza.image} alt="" height={292} width={292} />
-      <b>{pizza.price} ₽</b>
-      <Link to="/">
+      <h1>{item.name}</h1>
+      <img src={item.image} alt="" height={292} width={292} />
+      <b>{item.price} ₽</b>
+      <Link to="/Pizza-Shop/">
         <Button>Назад</Button>
       </Link>
     </div>

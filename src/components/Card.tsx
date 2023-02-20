@@ -51,7 +51,7 @@ const Card: React.FC<CardProps> = ({
     <div className="pizza-block-wrapper">
       <div className="card">
         <div>
-          <Link to={`/pizza/${id}`} key={id}>
+          <Link to={`pizza/${id}`} key={id}>
             <img src={image} width={260} height={260} alt="pizza" />
             <b>{name}</b>
           </Link>

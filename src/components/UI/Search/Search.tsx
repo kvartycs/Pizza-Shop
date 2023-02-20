@@ -16,7 +16,7 @@ const Search: React.FC = () => {
   return (
     <div>
       <div className={styles.block}>
-        <img src="../img/search.svg" alt="search" />
+        <img src="img/search.svg" alt="search" />
         <input
           value={searchValue}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>

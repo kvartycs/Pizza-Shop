@@ -12,7 +12,7 @@ const CartEmpty: React.FC = () => {
         пиццу, перейди на главную страницу.
       </p>
       <img src="./img/empty-cart.svg" alt="empty" />
-      <Link to="/">
+      <Link to="/Pizza-Shop/">
         <button className="back">
           <img src="./img/back arrow.svg" alt="arrow" /> Вернуться назад
         </button>
